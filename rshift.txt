@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity rshift is
+port(clk,clr,din:in std_logic;q:buffer std_logic_vector(3 downto 0);dout:out std_logic);
+end rshift;
+architecture behavior of rshift is 
+begin 
+process(clk,clr)
+begin
+if(clr='1')then q<="0000";
+elsif(rising_edge(clk))then
+
+q(2 downto 0)<=q(3 downto 1);
+dout<=q(0);
+q(3)<=din;
+
+end if;
+end process;
+end behavior;

@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity my_archi is
+port(A,B,C,D :in std_logic;Y:out std_logic);
+end my_archi;
+architecture structure of my_archi is
+signal alpha,beta,thida:std_logic;
+component andgate port(e,f:in std_logic;g:out std_logic);
+end component;
+component orgate port(p,q:in std_logic;r:out std_logic);
+end component;
+component notgate port(t:in std_logic;w:out std_logic);
+end component;
+begin
+AND1:andgate port map(A,B,alpha);
+AND2:andgate port map(C,D,beta);
+OR1:orgate port map(alpha,beta,thida);
+NOT1:notgate port map(thida,Y);
+end structure;
